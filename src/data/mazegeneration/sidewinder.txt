@@ -1,0 +1,24 @@
+*** dati generazione labirinti con algoritmo sidewinder ***
+dimensione: 25
+tempo totale: 15
+tempo medio: 0
+
+dimensione: 50
+tempo totale: 22
+tempo medio: 0
+
+dimensione: 75
+tempo totale: 35
+tempo medio: 0
+
+dimensione: 100
+tempo totale: 65
+tempo medio: 0
+
+dimensione: 125
+tempo totale: 67
+tempo medio: 0
+
+dimensione: 150
+tempo totale: 102
+tempo medio: 1

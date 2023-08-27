@@ -1,0 +1,24 @@
+
+dimensione: 25
+tempo totale: 18
+tempo medio: 0
+
+dimensione: 50
+tempo totale: 32
+tempo medio: 0
+
+dimensione: 75
+tempo totale: 63
+tempo medio: 0
+
+dimensione: 100
+tempo totale: 113
+tempo medio: 1
+
+dimensione: 125
+tempo totale: 187
+tempo medio: 1
+
+dimensione: 150
+tempo totale: 243
+tempo medio: 2

@@ -1,0 +1,24 @@
+*** dati generazione labirinti con algoritmo di wilson ***
+dimensione: 25
+tempo totale: 106
+tempo medio: 1
+
+dimensione: 50
+tempo totale: 1087
+tempo medio: 10
+
+dimensione: 75
+tempo totale: 5600
+tempo medio: 56
+
+dimensione: 100
+tempo totale: 17460
+tempo medio: 174
+
+dimensione: 125
+tempo totale: 43526
+tempo medio: 435
+
+dimensione: 150
+tempo totale: 87893
+tempo medio: 878

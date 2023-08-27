@@ -1,0 +1,24 @@
+*** dati generazione labirinti con algoritmo di eller ***
+dimensione: 25
+tempo totale: 14
+tempo medio: 0
+
+dimensione: 50
+tempo totale: 26
+tempo medio: 0
+
+dimensione: 75
+tempo totale: 54
+tempo medio: 0
+
+dimensione: 100
+tempo totale: 80
+tempo medio: 0
+
+dimensione: 125
+tempo totale: 82
+tempo medio: 0
+
+dimensione: 150
+tempo totale: 129
+tempo medio: 1

@@ -1,0 +1,25 @@
+*** dati generazione labirinti con algoritmo di prim ***
+
+dimensione: 25
+tempo totale: 46
+tempo medio: 0
+
+dimensione: 50
+tempo totale: 72
+tempo medio: 0
+
+dimensione: 75
+tempo totale: 179
+tempo medio: 1
+
+dimensione: 100
+tempo totale: 266
+tempo medio: 2
+
+dimensione: 125
+tempo totale: 414
+tempo medio: 4
+
+dimensione: 150
+tempo totale: 610
+tempo medio: 6
