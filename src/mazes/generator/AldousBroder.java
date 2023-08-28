@@ -9,7 +9,7 @@ public class AldousBroder extends MazeGenerator{
         Grid g = new Grid(rows, columns);
         g.init();
 
-        GridCell current = g.getVertexByCoordinates(0, 0);
+        GridCell current = g.getCellByCoordinates(0, 0);
         current.visited = true;
         int visited = 1;
         int tot = rows * columns;

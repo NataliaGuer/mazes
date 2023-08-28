@@ -19,7 +19,7 @@ public class Prim extends MazeGenerator {
 
             GridCell c = active.get(rnd.nextInt(active.size()));
 
-            ArrayList<GridCell> neig = g.getVerticesNearTo(c);
+            ArrayList<GridCell> neig = g.getCellNearTo(c);
             neig.removeIf(n -> n.countLinks() > 0);
             
             if (neig.size() > 0) {

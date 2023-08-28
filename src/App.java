@@ -13,6 +13,7 @@ import mazes.generator.Kruskal;
 import mazes.generator.MazeGenerator;
 import mazes.generator.SideWinder;
 import mazes.generator.Wilson;
+import mazes.generator.WilsonTest;
 import mazes.solver.AStarSolver;
 import mazes.solver.DijkstraSolver;
 import mazes.solver.MazeSolver;
@@ -74,8 +75,8 @@ public class App {
         //g.toImage(common + "\\eller\\"+graphFilename);
 
         MazeSolver ms = new AStarSolver();
-        GridCell start = g.getVertexByCoordinates(0, 0);
-        GridCell end = g.getVertexByCoordinates(d-1, d-1);
+        GridCell start = g.getCellByCoordinates(0, 0);
+        GridCell end = g.getCellByCoordinates(d-1, d-1);
 
         ms.solve(g, start, end);
         System.out.println("ciclo negativo");
@@ -84,11 +85,11 @@ public class App {
 
     public static void mazesExamples() {
         //creazione di labirinti di dimensione 25 per visualizzazione
-        String fileName = "src\\data\\mazes\\aldousBroder.jpg";
-        MazeGenerator mg = new AldousBroder();
-        Grid g = mg.generate(25, 25);
+        String fileName = "src\\data\\mazes\\wilsonTest.jpg";
+        MazeGenerator mg = new WilsonTest();
+        int d = 25;
+        Grid g = mg.generate(d, d);
         g.toImage(fileName);
-
     }
 
     public static void test() {
@@ -105,8 +106,8 @@ public class App {
             for (int d = 25; d <= 150; d += 25) {
                 
                 Grid g = mg.generate(d, d);            
-                GridCell start = g.getVertexByCoordinates(0, 0);
-                GridCell end = g.getVertexByCoordinates(d-1, d-1);
+                GridCell start = g.getCellByCoordinates(0, 0);
+                GridCell end = g.getCellByCoordinates(d-1, d-1);
         
                 long total = 0;
         

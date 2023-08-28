@@ -23,6 +23,8 @@ public class Grid extends Graph {
     protected int rows;
     protected int columns;
 
+    protected Random r;
+
     protected final static int CELL_HEIGHT = 10;
     protected final static int CELL_WIDTH  = 10;
     
@@ -32,6 +34,8 @@ public class Grid extends Graph {
         this.rows = rows;
         this.columns = columns;
         this.vertices = new GridCell[rows][columns];
+
+        this.r = new Random();
     }
 
     public GridCell addVertex(int x, int y) {
@@ -77,26 +81,30 @@ public class Grid extends Graph {
     }
 
     public GridCell getNorth(GridCell v) {
-        return this.getVertexByCoordinates(v.x - 1, v.y);
+        return this.getCellByCoordinates(v.x - 1, v.y);
     }
 
     public GridCell getEast(GridCell v) {
-        return this.getVertexByCoordinates(v.x, v.y + 1);
+        return this.getCellByCoordinates(v.x, v.y + 1);
     }
 
     public GridCell getSouth(GridCell v) {
-        return this.getVertexByCoordinates(v.x + 1, v.y);
+        return this.getCellByCoordinates(v.x + 1, v.y);
     }
 
     public GridCell getWest(GridCell v) {
-        return this.getVertexByCoordinates(v.x, v.y - 1);
+        return this.getCellByCoordinates(v.x, v.y - 1);
     }
 
-    public GridCell getVertexByCoordinates(int x, int y) {
+    public GridCell getCellByCoordinates(int x, int y) {
         if (0 <= x && x < rows && 0 <= y && y < columns) {
             return this.vertices[x][y];
         }
         return null;
+    }
+
+    public GridCell getRandomCell() {
+        return this.getCellByCoordinates(r.nextInt(rows), r.nextInt(columns));
     }
 
     /**
@@ -105,7 +113,7 @@ public class Grid extends Graph {
      * @param v
      * @return
      */
-    public ArrayList<GridCell> getVerticesNearTo(GridCell v) {
+    public ArrayList<GridCell> getCellNearTo(GridCell v) {
         ArrayList<GridCell> res = new ArrayList<GridCell>();
         GridCell n = getNorth(v);
         if (n != null) {
@@ -127,6 +135,25 @@ public class Grid extends Graph {
             res.add(n);
         }
 
+        return res;
+    }
+
+    public GridCell getRandomCellNearTo(GridCell v) {
+        ArrayList<GridCell> near = getCellNearTo(v);
+        int i = r.nextInt((near.size()));
+        return near.get(i);
+    }
+
+    @Override
+    public ArrayList<Edge> getEdges() {
+        ArrayList<Edge> res = new ArrayList<Edge>();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                for (Edge edge : vertices[i][j].getEdges()) {
+                    res.add(edge);
+                }
+            }
+        }
         return res;
     }
 
@@ -162,15 +189,14 @@ public class Grid extends Graph {
     public void braid(double p){
         //iterazione attraverso i vicoli ciechi
         //il singolo vicolo cieco viene eliminato se il numero randomico estratto (tra 0 e 1) è minore di p
-        Random rnd = new Random();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
 
                 GridCell v = vertices[i][j];
 
-                if(v.getEdges().size() == 1 && rnd.nextDouble() < p){
+                if(v.getEdges().size() == 1 && r.nextDouble() < p){
                     //eliminazione del vicolo cieco attraverso il collegamento del vertice a uno dei suo vicini
-                    ArrayList<GridCell> nearV = getVerticesNearTo(v);
+                    ArrayList<GridCell> nearV = getCellNearTo(v);
                     ArrayList<GridCell> preferredList = new ArrayList<>();
                 
                     for (GridCell vertex : nearV) {
@@ -183,9 +209,9 @@ public class Grid extends Graph {
                     GridCell toLink = null;
                     if(preferredListSize > 0){
                         //se ci sono vicoli ciechi tra i vertici vicini al vertice corrente si sceglie uno di essi
-                        toLink = preferredList.get(rnd.nextInt(preferredListSize));
+                        toLink = preferredList.get(r.nextInt(preferredListSize));
                     } else {
-                        toLink = nearV.get(rnd.nextInt(nearV.size()));
+                        toLink = nearV.get(r.nextInt(nearV.size()));
                     }
 
                     addEdge(v, toLink, 1);
@@ -231,26 +257,6 @@ public class Grid extends Graph {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public GridCell getRandomCellNearTo(GridCell v) {
-        ArrayList<GridCell> near = getVerticesNearTo(v);
-        Random r = new Random();
-        int i = r.nextInt((near.size()));
-        return near.get(i);
-    }
-
-    @Override
-    public ArrayList<Edge> getEdges() {
-        ArrayList<Edge> res = new ArrayList<Edge>();
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                for (Edge edge : vertices[i][j].getEdges()) {
-                    res.add(edge);
-                }
-            }
-        }
-        return res;
     }
 
     protected void getGrid(Graphics2D g) {

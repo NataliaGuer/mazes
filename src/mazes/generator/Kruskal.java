@@ -23,7 +23,7 @@ public class Kruskal extends MazeGenerator {
         //per ogni vertice crea un insieme disgiunto
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                GridCell v = g.getVertexByCoordinates(i, j);
+                GridCell v = g.getCellByCoordinates(i, j);
                 ds.makeSet(v);
                 
                 GridCell north = g.getNorth(v);
@@ -45,6 +45,7 @@ public class Kruskal extends MazeGenerator {
             //seleziona uno dei vicini di u
             GridEdge e = virtualEdges.remove(0);
 
+            //se trova che i nodi su cui insiste l'arco sono in due insiemi disgiunti li unisce
             if (!ds.findSet((Node)e.start).equals(ds.findSet((Node)e.end))) {
                 ds.union((Node)e.start, (Node)e.end);
                 g.addEdge(e.start, e.end);

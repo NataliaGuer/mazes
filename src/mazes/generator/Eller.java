@@ -14,7 +14,7 @@ public class Eller extends MazeGenerator {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                GridCell v = g.getVertexByCoordinates(i, j);
+                GridCell v = g.getCellByCoordinates(i, j);
                 ds.makeSet(v);
             }
         }
@@ -22,8 +22,8 @@ public class Eller extends MazeGenerator {
         for (int i = 0; i < rows-1; i++) {
 
             for (int j = 0; j < columns-1; j++) {
-                GridCell v = g.getVertexByCoordinates(i, j);
-                GridCell left = g.getVertexByCoordinates(i, j+1);
+                GridCell v = g.getCellByCoordinates(i, j);
+                GridCell left = g.getCellByCoordinates(i, j+1);
                 
                 if( !ds.findSet(v).equals(ds.findSet(left)) && rnd.nextBoolean()) {
                     //colleagamento a destra
@@ -32,11 +32,11 @@ public class Eller extends MazeGenerator {
                 } 
             }
 
-            GridCell ref = g.getVertexByCoordinates(i, 0);
+            GridCell ref = g.getCellByCoordinates(i, 0);
             int linkedDown = 0;
             for (int j = 0; j < columns; j++) {
                 
-                GridCell v = g.getVertexByCoordinates(i,j);
+                GridCell v = g.getCellByCoordinates(i,j);
 
                 if (!ds.findSet(v).equals(ds.findSet(ref))) {
                     ref = v;
@@ -55,7 +55,7 @@ public class Eller extends MazeGenerator {
 
         //riga finale
         for (int j = 0; j < columns-1; j++) {
-            GridCell v = g.getVertexByCoordinates(rows-1, j);
+            GridCell v = g.getCellByCoordinates(rows-1, j);
             GridCell east = g.getEast(v);
             if(!ds.findSet(v).equals(ds.findSet(east))){
                 g.addEdge(v, east);

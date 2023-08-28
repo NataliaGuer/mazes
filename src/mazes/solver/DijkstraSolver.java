@@ -6,8 +6,6 @@ import java.util.PriorityQueue;
 import ds.graph.Vertex;
 import ds.graph.grid.Grid;
 import ds.graph.grid.GridCell;
-import ds.graph.tree.heap.BinaryMinHeap;
-import ds.util.PriorityElement;
 
 public class DijkstraSolver extends MazeSolver{
     

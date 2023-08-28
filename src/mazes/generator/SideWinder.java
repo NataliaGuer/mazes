@@ -18,7 +18,7 @@ public class SideWinder extends MazeGenerator{
         for (int i = 0; i < rows; i++) {
             ArrayList<GridCell> run = new ArrayList<GridCell>();
             for (int j = 0; j < columns; j++) {
-                GridCell v = g.getVertexByCoordinates(i, j);
+                GridCell v = g.getCellByCoordinates(i, j);
 
                 run.add(v);
 
