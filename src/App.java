@@ -11,6 +11,7 @@ import mazes.generator.AldousBroder;
 import mazes.generator.Eller;
 import mazes.generator.Kruskal;
 import mazes.generator.MazeGenerator;
+import mazes.generator.Prim;
 import mazes.generator.SideWinder;
 import mazes.generator.Wilson;
 import mazes.generator.WilsonTest;
@@ -85,8 +86,8 @@ public class App {
 
     public static void mazesExamples() {
         //creazione di labirinti di dimensione 25 per visualizzazione
-        String fileName = "src\\data\\mazes\\wilsonTest.jpg";
-        MazeGenerator mg = new WilsonTest();
+        String fileName = "src\\data\\mazes\\prim.jpg";
+        MazeGenerator mg = new Prim();
         int d = 25;
         Grid g = mg.generate(d, d);
         g.toImage(fileName);

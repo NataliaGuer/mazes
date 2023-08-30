@@ -107,12 +107,6 @@ public class Grid extends Graph {
         return this.getCellByCoordinates(r.nextInt(rows), r.nextInt(columns));
     }
 
-    /**
-     * restituisce i Vertex che sono spazialmente vicini a v nella griglia
-     * 
-     * @param v
-     * @return
-     */
     public ArrayList<GridCell> getCellNearTo(GridCell v) {
         ArrayList<GridCell> res = new ArrayList<GridCell>();
         GridCell n = getNorth(v);
